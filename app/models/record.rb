@@ -1,5 +1,5 @@
 class Record < ApplicationRecord
-    # belongs_to :review 
-    # belongs_to :user
+     has_many :reviews
+     # belongs_to :user
 
 end

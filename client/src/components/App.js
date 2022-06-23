@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
-import SignUp from "./SignUp";
 import Login from "./Login";
 import NavBar from "./NavBar";
 import Home from "./Home";
@@ -18,38 +17,23 @@ function App() {
     });
   }, []);
 
+  if (!user) return <Login onLogin={setUser} />;
+
+
   return (
     <>
 
 
       <NavBar user={user} setUser={setUser} />
       <main>
-        {user ? (
-          //  <Switch>
-          //    <Route path="/">
-          //      <Home user={user}/>
-          //    </Route>
-          //  </Switch>
           <Switch>
-           <Route  path="/records">
+            <Route  path="/records">
              <Records />
            </Route>
-         </Switch>
-        ) : (
-          <Switch>
-            <Route path="/signup">
-              <SignUp setUser={setUser} />
-            </Route>
-            <Route path="/login">
-              <Login setUser={setUser} />
-            </Route>
             <Route  path="/">
               <Home user={user}/>
             </Route>
           </Switch>
-
-          
-        )}
       </main>
       
          {/* <Switch>

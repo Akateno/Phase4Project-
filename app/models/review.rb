@@ -1,4 +1,4 @@
 class Review < ApplicationRecord
-    # has_many :records
+    belongs_to :record
     # has_many :users, through: :records 
 end

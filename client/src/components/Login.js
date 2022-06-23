@@ -1,48 +1,44 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import LoginForm from "./LoginForm";
+import SignUp from "./SignUp";
 
-function Login({ setUser }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    fetch("/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
-  }
+function Login({ onLogin }) {
+  const [showLogin, setShowLogin] = useState(true);
 
   return (
+   
     <div>
-      <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          autoComplete="off"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
-      </form>
+         <p1>Store</p1>
+      {showLogin ? (
+        <>
+          <LoginForm onLogin={onLogin} />
+          
+          <p>
+            Don't have an account? &nbsp;
+            <button color="secondary" onClick={() => setShowLogin(false)}>
+              Sign Up
+            </button>
+          </p>
+        </>
+      ) : (
+        <>
+          <SignUp onLogin={onLogin} />
+          
+          <p>
+            Already have an account? &nbsp;
+            <button color="secondary" onClick={() => setShowLogin(true)}>
+              Log In
+            </button>
+          </p>
+        </>
+      )}
     </div>
   );
+   
+     
 }
 
 export default Login;
+
+
