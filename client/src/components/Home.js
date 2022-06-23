@@ -1,31 +1,3 @@
-// import React, { useState } from "react";
-
-// function Home({id, name, artist, release_date, image, onRecordDelete, userID  }) {
-  
-  
- 
-//   function handleDeleteClick() {
-   
-//     fetch(`/user_records/${id}`, {
-//       method: "DELETE",
-//     });
-//     onRecordDelete(records.id);
-//   }
-
-//   return (
-//     <div key={id}>
-//        <img className="userRecordPic" src={image} alt={name} />
-//       <h2> Name: {name}</h2>
-//       <h3>Artist: {artist} </h3>
-//       <h4>Release Date: {release_date} </h4>
-//       <button onClick={handleDeleteClick}>Remove From Library</button>
-//     </div>
-//   )
-// }
-
-
-// export default Home;
-
 
 import { useEffect, useState } from "react";
 import UserList from "./UserList";
@@ -35,8 +7,6 @@ import EditProfilePic from "./EditProfilePic"
 function Home ({ user }) {
   const [records, setRecords] = useState([]);
   const [search, setSearch] = useState("");
-  const [isEditing, setIsEditing] = useState(false);
-  
   
   useEffect(() => {
     fetch("/user_records")
@@ -54,13 +24,15 @@ const displayedRecords = records.filter((rc) =>
     setRecords(updatedRecords);
   }
 
-  function onUpdatePic(updatedPic) {
-    
-      if (user.id === updatedPic.id) {
-        return updatedPic;
+  function onUpdateRecord(updateRecord) {
+    const updateRecords = records.map((record) => {
+      if (record.id === updateRecord.id) {
+        return updateRecord;
       } else {
-        return user.image_url;
+        return record;
       }
+    });
+    setRecords(updateRecords);
   }
 
 
@@ -68,25 +40,8 @@ const displayedRecords = records.filter((rc) =>
     <div className="userContainer">
     <h1> Welcome {user.username}</h1>
     <img className="profilepic" src={user.image_url} alt="profile"/>
-    <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
-            <span role="img" aria-label="edit">
-              ✏️
-            </span>
-          </button>
-    {isEditing ? (
-        
-        <EditProfilePic
-          user={user}
-          pic={user.image_url}
-          onUpdatePic={onUpdatePic}
-        />
-
-        
-      ) : (
-        <p></p>
-      )}
     <Search searchTerm={search} onChangeSearch={setSearch} />
-    <UserList userRecords={displayedRecords} onRecordDelete={handleDeleteRecord} />
+    <UserList userRecords={displayedRecords} onRecordDelete={handleDeleteRecord} onUpdateRecord={onUpdateRecord} />
   </div>
   )
 }

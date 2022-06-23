@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import Reviews from "./Reviews"
 
+
 function RecordCard({ id, name, artist, release_date, image, selectedRecord, setId }) {
 
     const [errors, setErrors] = useState([]);
@@ -35,14 +36,18 @@ function RecordCard({ id, name, artist, release_date, image, selectedRecord, set
     
 
   return (
-    <div className="card" onClick={() => setId(id)}>
+   
+    <div className="cards">
+      <div className="card" onClick={() => setId(id)}>
       <img  onClick={handleImageClick}className="cardPic" src={image} alt={name} />
       { visibleDetails ? <Reviews record={selectedRecord} review={reviews} /> : []}
-      <h2> Name: {name}</h2>
-      <h3>Artist: {artist} </h3>
-      <h4>Release Date: {release_date} </h4>
-      <button onClick={handleClick}> Add to Library</button>
+      <h2>Name: {name}</h2>
+      <h3><em>Artist: {artist}</em> </h3>
+      <h4><i>Release Date: {release_date}</i> </h4>
+      <button className="addButton" onClick={handleClick}> Add to Library</button>
     </div>
+    </div>
+    
   );
 }
 export default RecordCard;

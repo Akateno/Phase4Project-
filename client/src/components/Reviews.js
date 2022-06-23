@@ -23,9 +23,9 @@ function Reviews({ record }) {
   const userItems = record.reviews.map((rc)=>(
     
     <div key={rc.id}>
-       <h2> date: {rc.date}</h2>
-       <h3>comment: {rc.comment}</h3>
-       <h2>score: {rc.score}</h2>
+       <h4>User Score: {rc.score}</h4>
+       <h3>Comment: {rc.comment}</h3>
+       <p> Date Added: {rc.date}</p>
        <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
             <span role="img" aria-label="edit">
               ✏️
@@ -59,6 +59,7 @@ function Reviews({ record }) {
             <div className="reviewCard">
             {record ? (
              <div>
+              <h3 className="userReviews">User Reviews</h3>
             {userItems}
              </div>
                  ) : (

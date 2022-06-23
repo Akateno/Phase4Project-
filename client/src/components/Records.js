@@ -42,7 +42,7 @@ function Records(){
       return (
         <div className="recordcontainer">
           
-          <h1 className="recordheader">Records</h1>
+          <h1  className="recordheader">Records</h1>
           <Search searchTerm={search} onChangeSearch={setSearch} />
           <RecordList record = {displayedRecords} selectedRecord={selectedRecord} setId={setId}/>
           {/* <ReviewList records={records}/> */}

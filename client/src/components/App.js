@@ -21,11 +21,10 @@ function App() {
 
 
   return (
-    <>
-
-
-      <NavBar user={user} setUser={setUser} />
-      <main>
+    
+    <div >
+       <NavBar user={user} setUser={setUser} />
+      <main className="recordcontainer">
           <Switch>
             <Route  path="/records">
              <Records />
@@ -35,14 +34,9 @@ function App() {
             </Route>
           </Switch>
       </main>
-      
-         {/* <Switch>
-          <Route exact path="/records">
-            <Records />
-          </Route>
-        </Switch> 
-       */}
-    </>
+    </div>
+     
+    
   );
 }
 export default App;

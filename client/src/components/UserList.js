@@ -1,13 +1,13 @@
 import React from "react";
-import UserRecord from "./UserRecords";
-function UserList({userRecords,onRecordDelete}) {
+import UserRecords from "./UserRecords";
+function UserList({userRecords,onRecordDelete, onUpdateRecord}) {
 
 
     
   return (
     <div className="Usercards">
       {userRecords.map((rec) => (
-        <UserRecord
+        <UserRecords
         id={rec.id}
         key={rec.id}
         name={rec.name}
@@ -16,6 +16,7 @@ function UserList({userRecords,onRecordDelete}) {
         image={rec.image}
         userID={rec.user_id}
         onRecordDelete={onRecordDelete}
+        onUpdateRecord={onUpdateRecord}
         />
       ))}
     </div>

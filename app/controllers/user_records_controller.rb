@@ -14,6 +14,12 @@ class UserRecordsController < ApplicationController
         head :no_content 
     end 
 
+    def update 
+        record=find_record
+        record.update!(record_params)
+        render json: record, status: :accepted
+    end 
+
     private
      def current_user
          User.find_by(id: session[:user_id])
