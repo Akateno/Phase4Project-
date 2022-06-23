@@ -32,19 +32,22 @@ header button {
   color: salmon;
   cursor: pointer;
 }
-
+.signPage{
+  background-color: aqua;
+}
 main {
   margin: 1rem;
 }
 
 form {
-  background-color: #fff8e7;
+  background-color: brown;
   border: 1px solid salmon;
   display: flex;
   flex-direction: column;
   width: 400px;
   margin: 0 auto;
   padding: 0 1rem 1rem;
+  color:white;
 }
 
 form input {
@@ -53,4 +56,13 @@ form input {
 
 form button[type="submit"] {
   width: 40%;
+}
+
+.signIn{
+  background-color: brown;
+}
+.recordcontainer {
+  background-color: #ffde59;
+  text-align: center;
+  
 }

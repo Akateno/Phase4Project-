@@ -9,17 +9,17 @@ function Login({ onLogin }) {
   return (
    
     <div>
-         <p1>Store</p1>
+         <h1>Breeze Records</h1>
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />
           
-          <p>
+          <h1 className="signIn">
             Don't have an account? &nbsp;
             <button color="secondary" onClick={() => setShowLogin(false)}>
               Sign Up
             </button>
-          </p>
+          </h1>
         </>
       ) : (
         <>
